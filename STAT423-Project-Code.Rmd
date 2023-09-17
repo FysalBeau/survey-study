@@ -1,0 +1,507 @@
+ ---
+title: "STAT423-Project-Code"
+output: html_document
+date: "2023-04-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Read in Survey Data
+```{r}
+library(readr)
+survey.df <- read_csv("/.....file-path-to.../STAT423-SurveyData.csv") #reads our survey csv file into a dataframe
+survey.df #view dataframe
+```
+We will calculate SRS without replacement, why? because our observations are selected randomly, and once an observation is selected it cant be selected again. 
+
+As Q4-Q11 columns contain numerical values, we will calculate the sample mean $\bar{X}$ for each column using R
+
+Q4 Sample Mean: $\bar{X} = 4.72$ 
+
+```{r}
+mean(survey.df$Q4, data=survey.df)
+```
+
+Q5 Sample Mean: $\bar{X} = 3.64$ 
+
+```{r}
+mean(survey.df$Q5, data=survey.df)
+```
+
+Q4&5 Sample Mean: $\bar{X} = 15.94$ 
+
+```{r}
+mean(survey.df$Q4and5, data=survey.df)
+```
+
+
+Q6 Sample Mean: $\bar{X} = 2.9$ 
+
+```{r}
+mean(survey.df$Q6, data=survey.df)
+```
+Q7 Sample Mean: $\bar{X} = 3.308$ 
+
+```{r}
+mean(survey.df$Q7, data=survey.df)
+```
+
+Q8 Sample Mean: $\bar{X} = 1.82$ 
+
+```{r}
+mean(survey.df$Q8, data=survey.df)
+```
+
+Q7&8 Sample Mean: $\bar{X} =  7.498$ 
+
+```{r}
+mean(survey.df$Q7and8, data=survey.df)
+```
+
+Q9 Sample Mean: $\bar{X} = 6.86$ 
+
+```{r}
+mean(survey.df$Q9, data=survey.df)
+```
+
+Q10 Sample Mean: $\bar{X} = 7.48$ 
+
+```{r}
+mean(survey.df$Q10, data=survey.df)
+```
+
+Q11 Sample Mean: $\bar{X} = 3.56$ 
+
+```{r}
+mean(survey.df$Q11, data=survey.df)
+```
+
+**Boxplots & Density plots for Q4-Q11 columns**
+
+Boxplots & Density plots for Q4
+```{r}
+ggplot(survey.df, aes(x = Q4, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Hours") + ylab("") + ggtitle("Boxplot of Average hours devoted to academic work each day during the semester from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q4, xlab="Number of Hours", main="Density Plot of Average hours devoted to academic work each day during the semester from a SRS of Undergraduate Students")
+```
+Boxplots & Density plots for Q5
+```{r}
+ggplot(survey.df, aes(x = Q5, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Days") + ylab("") + ggtitle("Boxplot of Average number of days spent playing video games in a week from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q5, xlab="Number of Days", main="Density Plot  of Average number of days spent playing video games in a week from a SRS of Undergraduate Students")
+```
+Boxplots & Density plots for Q4&5
+```{r}
+ggplot(survey.df, aes(x = Q4and5, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Days") + ylab("") + ggtitle("Boxplot of Average number of hours spent playing video games in a week from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q4and5, xlab="Number of Days", main="Density Plot  of Average number of hours spent playing video games in a week from a SRS of Undergraduate Students")
+```
+
+Boxplots & Density plots for Q6
+```{r}
+ggplot(survey.df, aes(x = Q6, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Hours") + ylab("") + ggtitle("Boxplot of Average hours spent playing video games in a day from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q6, xlab="Number of Hours", main="Density Plot of Average hours spent playing video games in a day from a SRS of Undergraduate Students")
+```
+
+Boxplots & Density plots for Q7
+```{r}
+ggplot(survey.df, aes(x = Q7, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Times") + ylab("") + ggtitle("Boxplot of Average number of times engaged in physical exercise or activities from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q7, xlab="Number of Times", main="Density Plot f Average number of times engaged in physical exercise or activities from a SRS of Undergraduate Students")
+```
+
+Boxplots & Density plots for Q8
+```{r}
+ggplot(survey.df, aes(x = Q8, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Hours") + ylab("") + ggtitle("Boxplot of Average hours of single exercise session from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q8, xlab="Number of Hours", main="Density Plot of Average hours of single exercise session from a SRS of Undergraduate Students")
+```
+Boxplots & Density plots for Q7&8
+```{r}
+ggplot(survey.df, aes(x = Q7and8, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Hours") + ylab("") + ggtitle("Boxplot of Average hours spent engaged in physical exercise or activities per week from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q7and8, xlab="Number of Hours", main="Density Plot of Average hours spent engaged in physical exercise or activities per week from a SRS of Undergraduate Students")
+```
+
+Boxplots & Density plots for Q9
+```{r}
+ggplot(survey.df, aes(x = Q9, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Hours") + ylab("") + ggtitle("Boxplot of Average hours of sleep per day from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q9, xlab="Number of Hours", main="Density Plot of Average hours of sleep per day from a SRS of Undergraduate Students")
+```
+
+Boxplots & Density plots for Q10
+```{r}
+ggplot(survey.df, aes(x = Q10, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Hours") + ylab("") + ggtitle("Boxplot of Average hours  spent socializing (face-to-face or virtually) per week from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q10, xlab="Number of Hours", main="Density Plot of Average hours spent socializing (face-to-face or virtually) per week from a SRS of Undergraduate Students")
+```
+
+Boxplots & Density plots for Q11
+```{r}
+ggplot(survey.df, aes(x = Q11, y = "var1")) + geom_boxplot(col="red", fill="blue") + xlab("Number of Courses") + ylab("") + ggtitle("Boxplot of Average number of courses enrolled in this semester (Winter 2023) from a SRS of Undergraduate Students")
+#
+densityplot(survey.df$Q11, xlab="Number of Courses", main="Density Plot of Average number of courses enrolled in this semester (Winter 2023) from a SRS of Undergraduate Students")
+```
+
+**Now we will construct a 95% confidence interval estimate for $\mu$ - the population mean for each numerical survey question (Q4-Q11)**
+
+
+
+From this data,
+$$
+n = 25 \\
+N = 53
+$$
+```{r}
+n=25
+N = 53
+```
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q4**
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q4, data=survey.df) #compute various sample statistic on the variable Q4 held in the survey data frame
+```
+
+```{r}
+meanQ4 = favstats(~Q4, data=survey.df)$mean #assignment of the sample mean 
+sdQ4 = favstats(~Q4, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ4
+sdQ4
+```
+```{r}
+meQ4 = qt(0.975, (n-1))*(sqrt(((sdQ4^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ4)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ4** and **ubQ4** with the following code
+
+```{r}
+lbQ4 = meanQ4 - meQ4  #computes the lower bound, assigns this computation to lbQ4
+ubQ4 = meanQ4 + meQ4  #computes the upper bound assigned as ubQ4
+print(lbQ4)  #displays the lower bound
+print(ubQ4)  #displays the upper bound
+```
+</div>
+and
+$$
+3.364607 \leq \mu \leq 6.075393
+$$
+From these data, we are 95% confidence that the mean average hours devoted to academic work each day during the semester, including classes and assignments for Undergraduate Students at UofC is somewhere between 3.364607 and 6.075393.
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q5**
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q5, data=survey.df) #compute various sample statistic on the variable Q5 held in the survey data frame
+```
+
+```{r}
+meanQ5 = favstats(~Q5, data=survey.df)$mean #assignment of the sample mean 
+sdQ5 = favstats(~Q5, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ5
+sdQ5
+```
+```{r}
+meQ5 = qt(0.975, (n-1))*(sqrt(((sdQ5^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ5)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ5** and **ubQ5** with the following code
+
+```{r}
+lbQ5 = meanQ5 - meQ5  #computes the lower bound, assigns this computation to lbQ5
+ubQ5 = meanQ5 + meQ5  #computes the upper bound assigned as ubQ5
+print(lbQ5)  #displays the lower bound
+print(ubQ5)  #displays the upper bound
+```
+</div>
+and
+$$
+2.379694 \leq \mu \leq 4.900306
+$$
+From these data, we are 95% confidence that the mean average days where student played video games in a week for Undergraduate Students at UofC is somewhere between  2.379694 and 4.900306.
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q4&5**
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q4and5, data=survey.df) #compute various sample statistic on the variable Q4and5 held in the survey data frame
+```
+
+```{r}
+meanQ4and5 = favstats(~Q4and5, data=survey.df)$mean #assignment of the sample mean 
+sdQ4and5 = favstats(~Q4and5, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ4and5
+sdQ4and5
+```
+```{r}
+meQ4and5 = qt(0.975, (n-1))*(sqrt(((sdQ4and5^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ4and5)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ4and5** and **ubQ4and5** with the following code
+
+```{r}
+lbQ4and5 = meanQ4and5 - meQ4and5  #computes the lower bound, assigns this computation to lbQ5
+ubQ4and5 = meanQ4and5 + meQ4and5  #computes the upper bound assigned as ubQ5
+print(lbQ4and5)  #displays the lower bound
+print(ubQ4and5)  #displays the upper bound
+```
+</div>
+and
+$$
+6.047623 \leq \mu \leq 25.83238
+$$
+From these data, we are 95% confidence that the mean average hours student played video games in a week for Undergraduate Students at UofC is somewhere between 6.047623 and 25.83238.
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q6**
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q6, data=survey.df) #compute various sample statistic on the variable Q6 held in the survey data frame
+```
+
+```{r}
+meanQ6 = favstats(~Q6, data=survey.df)$mean #assignment of the sample mean 
+sdQ6 = favstats(~Q6, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ6
+sdQ6
+```
+```{r}
+meQ6 = qt(0.975, (n-1))*(sqrt(((sdQ6^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ6)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ6** and **ubQ6** with the following code
+
+```{r}
+lbQ6 = meanQ6 - meQ6  #computes the lower bound, assigns this computation to lbQ6
+ubQ6 = meanQ6 + meQ6  #computes the upper bound assigned as ubQ6
+print(lbQ6)  #displays the lower bound
+print(ubQ6)  #displays the upper bound
+```
+</div>
+and
+$$
+ 1.471878\leq \mu \leq 4.328122
+$$
+From these data, we are 95% confidence that the mean average hours spent playing video games in a day for Undergraduate Students at UofC is somewhere between  1.471878  and  4.328122.
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q7**
+
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q7, data=survey.df) #compute various sample statistic on the variable Q7 held in the survey data frame
+```
+
+```{r}
+meanQ7 = favstats(~Q7, data=survey.df)$mean #assignment of the sample mean 
+sdQ7 = favstats(~Q7, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ7
+sdQ7
+```
+```{r}
+meQ7 = qt(0.975, (n-1))*(sqrt(((sdQ7^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ7)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ7** and **ubQ7** with the following code
+
+```{r}
+lbQ7 = meanQ7 - meQ7  #computes the lower bound, assigns this computation to lbQ7
+ubQ7 = meanQ7 + meQ7  #computes the upper bound assigned as ubQ7
+print(lbQ7)  #displays the lower bound
+print(ubQ7)  #displays the upper bound
+```
+</div>
+and
+$$
+2.386827 \leq \mu \leq 4.229173
+$$
+From these data, we are 95% confidence that the mean average times student engages in physical exercise or activities per week for Undergraduate Students at UofC is somewhere between   2.386827 and 4.229173.
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q8**
+
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q8, data=survey.df) #compute various sample statistic on the variable Q8 held in the survey data frame
+```
+
+```{r}
+meanQ8 = favstats(~Q8, data=survey.df)$mean #assignment of the sample mean 
+sdQ8 = favstats(~Q8, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ8
+sdQ8
+```
+```{r}
+meQ8 = qt(0.975, (n-1))*(sqrt(((sdQ8^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ8)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ8** and **ubQ8** with the following code
+
+```{r}
+lbQ8 = meanQ8 - meQ8  #computes the lower bound, assigns this computation to lbQ8
+ubQ8 = meanQ8 + meQ8  #computes the upper bound assigned as ubQ8
+print(lbQ8)  #displays the lower bound
+print(ubQ8)  #displays the upper bound
+```
+</div>
+and
+$$
+1.115383 \leq \mu \leq  2.524617
+$$
+From these data, we are 95% confidence that the mean average hours single exercise session lasts for Undergraduate Students at UofC is somewhere between  1.115383 and  2.524617.
+
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q7and8**
+
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q7and8, data=survey.df) #compute various sample statistic on the variable Q7and8 held in the survey data frame
+```
+
+```{r}
+meanQ7and8 = favstats(~Q7and8, data=survey.df)$mean #assignment of the sample mean 
+sdQ7and8 = favstats(~Q7and8, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ7and8
+sdQ7and8
+```
+```{r}
+meQ7and8 = qt(0.975, (n-1))*(sqrt(((sdQ7and8^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ7and8)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ7and8** and **ubQ7and8** with the following code
+
+```{r}
+lbQ7and8 = meanQ7and8 - meQ7and8  #computes the lower bound, assigns this computation to lbQ7and8
+ubQ7and8 = meanQ7and8 + meQ7and8  #computes the upper bound assigned as ubQ7and8
+print(lbQ7and8)  #displays the lower bound
+print(ubQ7and8)  #displays the upper bound
+```
+</div>
+and
+$$
+ 4.173356 \leq \mu \leq 10.82264
+$$
+From these data, we are 95% confidence that the mean Average hours spent engaged in physical exercise or activities per week from a SRS of Undergraduate Students at UofC is somewhere between 4.173356 and 10.82264.
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q9**
+
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q9, data=survey.df) #compute various sample statistic on the variable Q9 held in the survey data frame
+```
+
+```{r}
+meanQ9 = favstats(~Q9, data=survey.df)$mean #assignment of the sample mean 
+sdQ9 = favstats(~Q9, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ9
+sdQ9
+```
+```{r}
+meQ9 = qt(0.975, (n-1))*(sqrt(((sdQ9^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ9)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ9** and **ubQ9** with the following code
+
+```{r}
+lbQ9 = meanQ9 - meQ9  #computes the lower bound, assigns this computation to lbQ9
+ubQ9 = meanQ9 + meQ9  #computes the upper bound assigned as ubQ9
+print(lbQ9)  #displays the lower bound
+print(ubQ9)  #displays the upper bound
+```
+</div>
+and
+$$
+6.15923 \leq \mu \leq 7.56077
+$$
+From these data, we are 95% confidence that the mean average hours spent sleeping in a day for Undergraduate Students at UofC is somewhere between 6.15923 and7.56077
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q10**
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q10, data=survey.df) #compute various sample statistic on the variable Q9 held in the survey data frame
+```
+
+```{r}
+meanQ10 = favstats(~Q10, data=survey.df)$mean #assignment of the sample mean 
+sdQ10 = favstats(~Q10, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ10
+sdQ10
+```
+```{r}
+meQ10 = qt(0.975, (n-1))*(sqrt(((sdQ10^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ10)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ10** and **ubQ10** with the following code
+
+```{r}
+lbQ10 = meanQ10 - meQ10  #computes the lower bound, assigns this computation to lbQ10
+ubQ10 = meanQ10 + meQ10  #computes the upper bound assigned as ubQ10
+print(lbQ10)  #displays the lower bound
+print(ubQ10)  #displays the upper bound
+```
+</div>
+and
+$$
+5.534037 \leq \mu \leq 9.425963
+$$
+From these data, we are 95% confidence that the mean average hours spent socializing (face-to-face or virtually) per week for Undergraduate Students at UofC is somewhere between 5.534037 and 9.425963
+
+**95% confidence interval estimate for $\mu$ - the population mean for survey question Q11**
+
+Now, let's use the `favstats` command to compute various sample statistics:
+
+```{r}
+favstats(~Q11, data=survey.df) #compute various sample statistic on the variable Q9 held in the survey data frame
+```
+
+```{r}
+meanQ11 = favstats(~Q11, data=survey.df)$mean #assignment of the sample mean 
+sdQ11 = favstats(~Q11, data=survey.df)$sd #assignment of the sample standard deviation
+meanQ11
+sdQ11
+```
+```{r}
+meQ11 = qt(0.975, (n-1))*(sqrt(((sdQ11^2)/n)*((N - n)/(n)))) #compute the margin of error of the confidence interval 
+print(meQ11)
+```
+
+Now we can instruct R to create a "lower bound" and an "upper bound", or **lbQ11** and **ubQ11** with the following code
+
+```{r}
+lbQ11 = meanQ11 - meQ11  #computes the lower bound, assigns this computation to lbQ11
+ubQ11 = meanQ11 + meQ11  #computes the upper bound assigned as ubQ11
+print(lbQ11)  #displays the lower bound
+print(ubQ11)  #displays the upper bound
+```
+</div>
+and
+$$
+2.954165 \leq \mu \leq 4.165835
+$$
+From these data, we are 95% confidence that the mean average number of courses enrolled in for Undergraduate Students at UofC is somewhere between 2.954165 and 4.165835
